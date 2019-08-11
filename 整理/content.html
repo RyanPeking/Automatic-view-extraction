@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="user-scalable=no,width=device-width, initial-scale=1">
+<title>内容分析</title>
+   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/common.css" rel="stylesheet">
+   <link href="css/content.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="css/jqcloud.css" />
+   <script src="js/jquery.min.js"></script>
+   <script src="bootstrap/js/bootstrap.min.js"></script>
+   <script src="js/echarts.min.js"></script>
+   <script src="js/china.js"></script>
+   <script src="js/jqcloud-1.0.4.js" type="text/javascript" charset="utf-8"></script>
+<!--[if lt IE 9]>
+<script src="js/respond.min.js"></script>
+<![endif]-->   
+<script type="text/javascript">
+		//获取设备渲染像素宽度
+		var iWidth = document.documentElement.clientWidth;
+		document.getElementsByTagName('html')[0].style.fontSize = iWidth/10 + 'px';	
+		
+</script>	
+</head>
+
+
+<body>
+
+<!--navtop-->
+<div class="navtop">
+	<div class="container">
+		<div class="navbar navbar-default" role="navigation">
+			<!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
+			<a href="#" class="navbar-brand"><img src="images/logo.png" ></a>
+			<div class="navbar-header">			
+				<!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="sr-only">Toggle Navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
+			<div class="collapse navbar-collapse navbar-responsive-collapse">
+				<ul class="nav navbar-nav" >
+					<li ><a href="#">宏观政策</a></li>
+					<li ><a href="#">产业动向</a></li>
+					<li ><a href="#">科研动态</a></li>
+					<li ><a href="#">热点关注</a></li>
+					<li ><a href="#">监测快报</a></li>
+					<li ><a href="#">舆情监测</a></li>
+					<li class="login" ><a href="#">登录</a></li>
+					<li class="register"><a href="#">注册</a></li>
+				</ul>
+			</div>
+			<!--end collapse-->
+		</div>
+		<!--end navbar-->
+	</div>
+	<!--end container-->
+</div>
+<!--end navtop-->
+
+<!--cont-->
+<div class="top-head container">
+	<div class="row">
+		<div class="col-md-6 col-xs-12 title">
+			监测主题
+		</div>
+		<div class="col-md-6 col-xs-12 list">
+			<ul class="">
+				<li >数据汇总</li>
+				<li class="current">内容分析</li>
+				<li >关键词配置</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="body container">
+	<div class="row">
+		<div class="col-md-6 col-xs-12">
+			<div class="row item" >
+				<div class="title">
+					情感属性
+				</div>
+				<div id="main1" style="width:97.5%;min-height:300px;">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row item item-2" >
+				<div class="title">
+					<span>重要舆情</span>
+					<div class="btns">
+						<input type="checkbox" class="check-all"/>
+						<span>全选</span>
+						<span>预警</span>
+						<span>删除</span>
+					</div>
+				</div>
+				<ul class="list">
+					<li><input type="checkbox" name="news"> <div class="cont">媒体暗访海底捞，这样的火锅你敢吃？！</div><div class="extra">相似文章：977条</div></li>
+					<li><input type="checkbox" name="news"> <div class="cont">媒体暗访海底捞，这样的火锅你敢吃？！</div><div class="extra">相似文章：977条</div></li>
+					<li><input type="checkbox" name="news"> <div class="cont">媒体暗访海底捞，这样的火锅你敢吃？！</div><div class="extra">相似文章：977条</div></li>
+					<li><input type="checkbox" name="news"> <div class="cont">媒体暗访海底捞，这样的火锅你敢吃？！</div><div class="extra">相似文章：977条</div></li>
+					<li><input type="checkbox" name="news"> <div class="cont">媒体暗访海底捞，这样的火锅你敢吃？！</div><div class="extra">相似文章：977条</div></li>
+					<li><input type="checkbox" name="news"> <div class="cont">媒体暗访海底捞，这样的火锅你敢吃？！</div><div class="extra">相似文章：977条</div></li>
+					<li><input type="checkbox" name="news"> <div class="cont">媒体暗访海底捞，这样的火锅你敢吃？！</div><div class="extra">相似文章：977条</div></li>
+					<li><input type="checkbox" name="news"> <div class="cont">媒体暗访海底捞，这样的火锅你敢吃？！</div><div class="extra">相似文章：977条</div></li>
+				</ul>
+			</div>
+		</div>	
+		<div style="clear:both;"></div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row item item-3" >
+				<div class="title">
+					情感走势
+				</div>
+				<div id="main2" style="width:97.5%;min-height:300px;">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row item item-4" >
+				<div class="title">
+					热门监测词组
+				</div>
+				<div class="words">
+					<span>海底捞+后厨<em>(18138)</em></span>
+					<span>海底捞+后厨<em>(18138)</em></span>
+					<span>海底捞+后厨<em>(18138)</em></span>
+					<span>海底捞+后厨<em>(18138)</em></span>
+					<span>海底捞+后厨<em>(18138)</em></span>
+				</div>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row item item-5" >
+				<div class="title">
+					文章类型
+				</div>
+				<div id="main3" style="width:97.5%;min-height:300px;">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row item item-6" >
+				<div class="title">
+					热门主题词
+				</div>
+				<div class="themes" id="my_favorite_latin_words" style="width: 97.5%; margin-left:2.6%; height: 300px;background:#ffffff; ">
+				</div>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row item item-7" >
+				<div class="title">
+					舆情走势
+				</div>
+				<div id="main4" style="width:97.5%;min-height:300px;">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row item item-8" >
+				<div class="title">
+					媒体分布
+				</div>
+				<div id="main5" style="width:97.5%;min-height:300px;">
+				</div>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row item item-7" >
+				<div class="title">
+					热词走势
+				</div>
+				<div id="main6" style="width:97.5%;min-height:300px;">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row item item-8" >
+				<div class="title">
+					发布热区
+				</div>
+				<div id="main7" style="width:97.5%;min-height:300px;">
+				</div>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row item item-9" >
+				<div class="title">
+					活跃媒体
+				</div>
+				<div class="tab-cont" style="position:relative;">
+					<div id="main8" style="width:97.5%;min-height:300px;position:relative;">
+						
+					</div>
+					<ul>
+						<li class="active">微信</li>
+						<li>微博</li>
+						<li>网页</li>
+						<li>报刊</li>
+						<li>客户端</li>
+						<li>论坛</li>					
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row item item-10" >
+				<div class="title">
+					提及热区
+				</div>
+				<div id="main9" style="width:97.5%;min-height:300px;">
+				</div>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+		<div class="white"></div>
+	</div>
+</div>
+</div>
+<!--end cont-->
+
+<div class="footer">
+	<div class="list container">
+		<ul>
+			<li><a href="#">加入收藏</a></li>
+			<li><a href="#">设为首页</a></li>
+			<li><a href="#">管理登录</a></li>
+		</ul>
+	</div>
+	<div class="info">
+		<span class="desp">
+			Powered TURING Copyright 2016-2017 news.turing.ac.cn, All rights reserved. V1.2.11
+		</span>
+	</div>
+</div>
+<script>
+
+var colors = ['#7eb9f7', '#e9a06b', '#e47c7c'];
+
+var myChart1 = echarts.init(document.getElementById('main1'))
+
+option1 = {
+	color:colors,
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        x: 'left',
+        data:['负面','中性','正面']
+    },
+    series: [
+        {
+            name:'访问来源',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data:[
+                {value:335, name:'负面'},
+                {value:310, name:'中性'},
+                {value:234, name:'正面'},
+            ]
+        }
+    ]
+};
+myChart1.setOption(option1);
+
+var myChart2 = echarts.init(document.getElementById('main2'))
+option2 = {
+	color:colors,
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['正面','中性','负面']
+    },
+    toolbox: {
+        show: false,
+        feature: {
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            dataView: {readOnly: false},
+            magicType: {type: ['line', 'bar']},
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    xAxis:  {
+        type: 'category',
+        boundaryGap: false,
+        data: ['一','二','三','四','五','六','七']
+    },
+    yAxis: {
+        type: 'value',
+        axisLabel: {
+            formatter: '{value}'
+        }
+    },
+    series: [
+        {
+            name:'正面',
+            type:'line',
+            data:[1, 1.5, 2, 10, 3, 2, 0],
+            smooth:true
+        },
+        {
+            name:'中性',
+            type:'line',
+            data:[1, 1.5, 1.8, 8, 3, 2, 0],
+            smooth:true
+        },
+        {
+            name:'负面',
+            type:'line',
+            data:[1, 1.5, 1.6, 5, 3, 2, 0],
+            smooth:true
+        }
+    ]
+};
+myChart2.setOption(option2);
+
+var colors2 = ['#4aa3ef']
+var myChart3 = echarts.init(document.getElementById('main3'))
+option3 = {
+    tooltip: {},
+	color:colors,
+	backgroundColor:colors,
+    radar: {
+        // shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#333333',
+                backgroundColor: '#ffffff',
+                borderRadius: 3,
+                padding: [3, 5]
+           }
+        },
+        indicator: [
+           { name: '旅游文化', max: 6500},
+           { name: '科技', max: 16000},
+           { name: '医疗健康', max: 30000},
+           { name: '环境', max: 38000},
+           { name: '体育', max: 52000},
+           { name: '职业', max: 25000},
+		   { name: '激动车辆', max: 6500},
+           { name: '交通', max: 16000},
+           { name: '法律', max: 30000},
+           { name: '娱乐', max: 38000},
+           { name: '教育', max: 52000},
+           { name: '经济金融', max: 25000},
+           { name: '政治', max: 25000},
+           { name: '军事', max: 25000},
+           { name: '其它', max: 25000}
+        ]
+    },
+    series: [{
+        name: '预算 vs 开销（Budget vs spending）',
+        type: 'radar',
+        areaStyle: {normal: {}},
+        data : [
+            {
+                value : [4300, 10000, 28000, 35000, 50000, 19000,4300, 10000, 28000, 35000, 50000, 19000,4300,4300,4300],
+                name : '预算分配（Allocated Budget）'
+            }
+        ]
+    }]
+};
+myChart3.setOption(option3);
+
+var data = [
+		['广州', 13, 111],
+		['浙江', 10, 111],
+		['江苏', 9, 111],
+		['北京', 8, 111],
+		['上海', 7, 111],
+		['河南', 6, 111],
+		['河北', 5, 111],
+		['四川', 5, 111],
+		['安徽', 5, 111],
+		['湖北', 5, 111],
+		['福建', 4, 111],
+		['辽宁', 4, 111],
+		['湖南', 3, 111],
+		['陕西', 3, 111],
+		['广西', 3, 111],
+		['江西', 3, 111],
+		['重庆', 3, 111],
+		['天津', 3, 111],
+		['云南', 2, 111],
+		['山西', 2, 111],
+		['黑龙江', 2, 111],
+		['吉林', 2, 111],
+		['内蒙古', 2, 111],
+		['贵州', 2, 111],
+		['甘肃', 2, 111],
+		['海南', 2, 111],
+		['宁夏', 2, 111],
+		['青海', 1, 111],
+		['西藏', 1, 111],
+		['香港', 1, 111],
+		['未知', 1, 111],
+		['台湾', 1, 111],
+		['台湾', 1, 111],
+		['台湾', 1, 111],
+		['台湾', 1, 111],
+		['台湾', 1, 111],
+		['台湾', 1, 111],
+		['台湾', 1, 111],
+		['台湾', 1, 111],
+	];
+	
+	var string_ = "";
+	for (var i = 0; i < data.length; i++) {
+		var string_f = data[i][0];
+		var string_n = data[i][1];
+		string_ += "{text: '" + string_f + "', weight: '" + string_n + "',html: {'class': 'span_list'}},";
+	}
+	
+	$(function() {
+		$("#my_favorite_latin_words").jQCloud(word_list);
+	});
+	var string_list = string_;
+	var word_list = eval("[" + string_list + "]");
+
+	var myChart4 = echarts.init(document.getElementById('main4'))
+	option4 = {
+		color:colors,
+		tooltip: {
+			trigger: 'axis'
+		},
+		legend: {
+			data:['正面','中性','负面']
+		},
+		toolbox: {
+			show: false,
+			feature: {
+				dataZoom: {
+					yAxisIndex: 'none'
+				},
+				dataView: {readOnly: false},
+				magicType: {type: ['line', 'bar']},
+				restore: {},
+				saveAsImage: {}
+			}
+		},
+		xAxis:  {
+			type: 'category',
+			boundaryGap: false,
+			data: ['一','二','三','四','五','六','七']
+		},
+		yAxis: {
+			type: 'value',
+			axisLabel: {
+				formatter: '{value}'
+			}
+		},
+		series: [
+			{
+				name:'正面',
+				type:'line',
+				data:[1, 1.5, 2, 10, 3, 2, 0],
+				smooth:true
+			},
+			{
+				name:'中性',
+				type:'line',
+				data:[1, 1.5, 1.8, 8, 3, 2, 0],
+				smooth:true
+			},
+			{
+				name:'负面',
+				type:'line',
+				data:[1, 1.5, 1.6, 5, 3, 2, 0],
+				smooth:true
+			}
+		]
+	};
+	myChart4.setOption(option4);
+
+	
+var myChart5 = echarts.init(document.getElementById('main5'))
+
+option5 = {
+	color:colors,
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        x: 'left',
+        data:['负面','中性','正面']
+    },
+    series: [
+        {
+            name:'访问来源',
+            type:'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data:[
+                {value:335, name:'负面'},
+                {value:310, name:'中性'},
+                {value:234, name:'正面'},
+            ]
+        }
+    ]
+};
+myChart5.setOption(option5);
+
+	var myChart6 = echarts.init(document.getElementById('main6'))
+	option6 = {
+		color:colors,
+		tooltip: {
+			trigger: 'axis'
+		},
+		legend: {
+			data:['正面','中性','负面']
+		},
+		toolbox: {
+			show: false,
+			feature: {
+				dataZoom: {
+					yAxisIndex: 'none'
+				},
+				dataView: {readOnly: false},
+				magicType: {type: ['line', 'bar']},
+				restore: {},
+				saveAsImage: {}
+			}
+		},
+		xAxis:  {
+			type: 'category',
+			boundaryGap: false,
+			data: ['一','二','三','四','五','六','七']
+		},
+		yAxis: {
+			type: 'value',
+			axisLabel: {
+				formatter: '{value}'
+			}
+		},
+		series: [
+			{
+				name:'正面',
+				type:'line',
+				data:[1, 1.5, 2, 10, 3, 2, 0],
+				smooth:true
+			},
+			{
+				name:'中性',
+				type:'line',
+				data:[1, 1.5, 1.8, 8, 3, 2, 0],
+				smooth:true
+			},
+			{
+				name:'负面',
+				type:'line',
+				data:[1, 1.5, 1.6, 5, 3, 2, 0],
+				smooth:true
+			}
+		]
+	};
+	myChart6.setOption(option6);
+
+function randomData() {
+    return Math.round(Math.random()*1000);
+}	
+var myChart7 = echarts.init(document.getElementById('main7'))	
+	option7 = {
+    dataRange: {
+        min: 4.0,
+        max: 9228,
+        x: 'left',
+        y: 'bottom',
+        text:['高','低'],           // 文本，默认为数值文本
+        calculable : true,
+		color:['#1977da','#d7f4fc']//值域颜色
+    },
+    series : [
+        {
+            name: 'iphone3',
+            type: 'map',
+            mapType: 'china',
+            roam: false,
+            itemStyle: {
+                        normal: {
+                            borderWidth: .5,//区域边框宽度
+                            borderColor: '#009fe8',//区域边框颜色
+                            areaColor:"#ffffff",//区域颜色
+                        },
+                        emphasis: {
+                            borderWidth: .5,
+                            borderColor: '#009fe8',
+                            areaColor:"#009fe8",
+                        }
+            },
+            data:[
+                {name: '北京',value: 9228},
+                {name: '广东',value: 802},
+                {name: '江苏',value: 608},
+                {name: '上海',value: 549},
+                {name: '浙江',value: 526},
+                {name: '山东',value: 525},
+                {name: '陕西',value: 344},
+                {name: '重庆',value: 341},
+                {name: '河南',value: 318},
+                {name: '四川',value: 291}
+            ]
+        }
+    ]
+};
+myChart7.setOption(option7);
+
+var myChart8 = echarts.init(document.getElementById('main8'))	
+var option8 = [
+{
+    color: ['#7eb9f7'],
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['半岛..', '人民网', '烟台..', '新京..', '扬州..', '新闻..', '淄博..','平湖..'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'文章数',
+            type:'bar',
+            barWidth: '60%',
+            data:[24, 22, 20, 18, 17, 15, 13,13]
+        }
+    ]
+},
+{
+    color: ['#7eb9f7'],
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['半岛..', '人民网', '烟台..', '新京..', '扬州..', '新闻..', '淄博..','平湖..'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'文章数',
+            type:'bar',
+            barWidth: '60%',
+            data:[24, 26, 10, 13, 17, 15, 13,13]
+        }
+    ]
+},
+{
+    color: ['#7eb9f7'],
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['半岛..', '人民网', '烟台..', '新京..', '扬州..', '新闻..', '淄博..','平湖..'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'文章数',
+            type:'bar',
+            barWidth: '60%',
+            data:[30, 22, 10, 16, 17, 14, 13,13]
+        }
+    ]
+},
+{
+    color: ['#7eb9f7'],
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['半岛..', '人民网', '烟台..', '新京..', '扬州..', '新闻..', '淄博..','平湖..'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'文章数',
+            type:'bar',
+            barWidth: '60%',
+            data:[24, 30, 20, 15, 14, 8, 13,13]
+        }
+    ]
+},
+{
+    color: ['#7eb9f7'],
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['半岛..', '人民网', '烟台..', '新京..', '扬州..', '新闻..', '淄博..','平湖..'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'文章数',
+            type:'bar',
+            barWidth: '60%',
+            data:[30, 22, 5, 24, 17, 16, 9,13]
+        }
+    ]
+},
+{
+    color: ['#7eb9f7'],
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['半岛..', '人民网', '烟台..', '新京..', '扬州..', '新闻..', '淄博..','平湖..'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'文章数',
+            type:'bar',
+            barWidth: '60%',
+            data:[24, 38, 5, 20, 6, 4, 18,13]
+        }
+    ]
+},
+]                   
+                    
+myChart8.setOption(option8[0]);
+$(".item-9 .tab-cont ul li").click(function(){
+	var index = $(this).index();
+	$(".item-9 .tab-cont ul li").removeClass("active").eq(index).addClass("active");
+	myChart8.setOption(option8[index]);
+})
+
+var myChart9 = echarts.init(document.getElementById('main9'))	
+	option9 = {
+    dataRange: {
+        min: 141,
+        max: 10443,
+        x: 'left',
+        y: 'bottom',
+        text:['高','低'],           // 文本，默认为数值文本
+        calculable : true,
+		color:['#1977da','#d7f4fc']//值域颜色
+    },
+    series : [
+        {
+            name: 'iphone3',
+            type: 'map',
+            mapType: 'china',
+            roam: false,
+            itemStyle: {
+                        normal: {
+                            borderWidth: .5,//区域边框宽度
+                            borderColor: '#009fe8',//区域边框颜色
+                            areaColor:"#ffffff",//区域颜色
+                        },
+                        emphasis: {
+                            borderWidth: .5,
+                            borderColor: '#009fe8',
+                            areaColor:"#009fe8",
+                        }
+            },
+            data:[
+                {name: '北京',value: 10443},
+                {name: '四川',value: 4364},
+                {name: '广东',value: 2870},
+                {name: '上海',value: 2606},
+                {name: '浙江',value: 2205},
+                {name: '江苏',value: 2020},
+                {name: '湖北',value: 1791},
+                {name: '辽宁',value: 1682},
+                {name: '陕西',value: 1641},
+                {name: '澳门',value: 1494}
+            ]
+        }
+    ]
+};
+myChart9.setOption(option9);
+</script>
+</body>
+</html>

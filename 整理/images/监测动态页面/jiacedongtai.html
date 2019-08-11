@@ -1,0 +1,573 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0056)#/searchCustom.jspx?hy=&em=&tpl=doc -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> 领域动态监测</title>
+
+		<link type="text/css" rel="stylesheet" href="./public/css/index.css">
+		<link type="text/css" rel="stylesheet" href="./public/css/my.css">
+		<script src="./public/js/jquery.js" type="text/javascript"></script>
+		<script src="./public/js/front.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="./public/css/login.css">
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<!--
+        	作者：360328893@qq.com
+        	时间：2017-05-06
+        	描述：日期控件
+        -->
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="./public/css/bootstrapDatepickr-1.0.0.css">
+		<script src="./public/js/bootstrapDatepickr-1.0.0.min.js"></script>
+
+			<script type="text/javascript">
+			    $(function() {
+			        $(".wenku_hot_list ul").find("li:gt(2)").hide();
+			        $(".wenku_hot_list ul").before("<button  type='button' style='margin-top: -55px;'  class='show btn-xs  pull-right  btn-default'><a>展开</a>&nbsp;<i class='glyphicon glyphicon-menu-down'></i></button>"); 
+			       
+			        showAndHide();
+			    });
+			    function showAndHide() {
+			        $(".show").click(function() {
+			            $(this).parent().find("li:gt(2)").slideToggle();
+			            var temp = $(this).find("a");
+			            temp.html() == "展开" ? $(this).html("<a>收起</a>&nbsp;<i class='glyphicon glyphicon-menu-up'></i>") : $(this).html("<a>展开</a>&nbsp;<i class='glyphicon glyphicon-menu-down'></i>");
+			       });
+			       
+			    }
+			</script>
+
+		<style type="text/css">
+			.wenku_hot_list  ul li{
+				border-bottom-width: 1px;
+				border-bottom-color: #EEEEEE;
+                 border-bottom-style: solid;
+                 padding-bottom: 15px;
+			}
+		</style>
+
+	</head>
+
+	<body style="background-color: rgb(252, 252, 252);">
+		<section class="top">
+			<div class="yellow"></div>
+			<div class="red"></div>
+			<div class="blue"></div>
+			<div class="yellow"></div>
+			<div class="red"></div>
+		</section>
+
+		<header class="header rel">
+
+			<div class="container clearfix">
+				<a class="logo" href="#"></a>
+				<nav class="nav">
+					<ul class="menu">
+						<li>
+							<a href="#/news/index.jhtml">新闻</a>
+						</li>
+						<li>
+							<a href="#/pic/index.jhtml">图库</a>
+						</li>
+						<li>
+							<a href="#/video/index.jhtml">视频</a>
+						</li>
+						<li>
+							<a href="http://bbs.jeecms.com/" target="_blank">论坛</a>
+						</li>
+						<li class="more">
+							<a href="#/download/index.jhtml">下载</a>
+							<ul class="menu-child">
+								<li>
+									<a href="#/job/index.jhtml">招聘</a>
+								</li>
+								<li>
+									<a href="#/doc/index.jhtml">文库</a>
+								</li>
+								<li>
+									<a href="#/guestbook.jspx">留言板</a>
+								</li>
+								<li>
+									<a href="#/kj/index.jhtml">科技</a>
+								</li>
+								<li>
+									<a href="#/wldc.jhtml">网络调查</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				<div class="header-r">
+
+					<div id="loginCsiDiv" style="float:left;">
+
+						<div class="login">
+							<a class="tc" href="#/login.jspx">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+							<a href="#">注册</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</header>
+
+		<div class="main container clearfix">
+			<!--搜索框-->
+		 <div class="row  news_search" style="margin-left: 0px !important;">
+
+				<div class="form-horizontal">
+					<div class="form-group col-md-2  col-sm-5">
+						<select class="form-control" id="searchtype">
+							<option selected="selected" value="0">全文</option>
+							<option value="1">标题</option>
+							<option value="2">组织</option>
+							<option value="3">项目负责人</option>
+						</select>
+					</div>
+					<div class="form-group-lg col-md-7 col-sm-4">
+						<input type="text" class="form-control" value="" id="searchContent" placeholder="请输入关键词">
+					</div>
+					<div class="form-group-lg col-md-1 col-sm-1">
+						<button type="button" onclick="selectSearch();" class="btn btn-default input-lg" style="margin-left:-20px; width:130%;">搜索</button>
+                   	</div>
+					 <!-- Large button group -->
+						<div class="btn-group">
+						  <button class="btn btn-warning btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    <i class="glyphicon glyphicon-signal">&nbsp;</i>专利计量分析 <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" style="min-width: 194px !important;">
+	
+						   <li> <a href="#"><i class="glyphicon glyphicon-blackboard">&nbsp;</i>动态计量分析报告</li>
+						   <li role="separator" class="divider"></li>
+						   <li><a href="#"><i class="glyphicon glyphicon-edit">&nbsp;</i>自定义计量分析</a></li>
+						   
+						  </ul>
+						</div>
+				</div>
+			</div>
+			<!--搜索框结束-->
+
+			<section class="news_hot col-md-3 news_left col-sm-3">
+				  <div class="wenku_hot_list">
+                 	<button class="btn btn-default btn-xs" style="width: 58%; display: inline;"><i class="glyphicon glyphicon-zoom-out"></i>&nbsp;筛选</button>
+                 	<button class="btn btn-default btn-xs" style="width:40%; display: inline;"><i class="glyphicon glyphicon-refresh"></i>&nbsp;重置</button>
+                 </div>
+				<h1 class="news_h1">申请时间</h1>
+				<div class="wenku_hot_list">
+					<ul>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2010年 <span class="badge">42</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2011年 <span class="badge">42</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年 <span class="badge">42</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年 <span class="badge">42</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年 <span class="badge">42</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年 <span class="badge">42</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年 <span class="badge">42</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年 <span class="badge">42</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年 <span class="badge">42</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年 <span class="badge">42</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年 <span class="badge">42</span></a>
+						</li>
+					</ul>
+					
+				</div>
+
+				<h1 class="news_h1">截至时间</h1>
+				<div class="wenku_hot_list">
+					<ul>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2010年 <span class="badge">41</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2011年<span class="badge">2</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年<span class="badge">4</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年<span class="badge">4</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年<span class="badge">4</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年<span class="badge">4</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年<span class="badge">4</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">2012年<span class="badge">4</span></a>
+						</li>
+					</ul>
+						 
+				</div>
+
+				<h1 class="news_h1">基金种类</h1>
+				<div class="wenku_hot_list">
+					<ul>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">补助金<span class="badge">41</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">补助金<span class="badge">41</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">补助金<span class="badge">41</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">补助金<span class="badge">41</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">补助金<span class="badge">41</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">补助金<span class="badge">41</span></a>
+						</li>
+					</ul>
+					
+				</div>
+
+				<h1 class="news_h1">研究机构</h1>
+				<div class="wenku_hot_list">
+					<ul>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">东京大学 <span class="badge">142</span></a>
+						</li>
+						 <li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">东京大学 <span class="badge">142</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">东京大学 <span class="badge">142</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">东京大学 <span class="badge">142</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">东京大学 <span class="badge">142</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">东京大学 <span class="badge">142</span></a>
+						</li>
+						 
+					</ul>
+						 
+				</div>
+
+				<h1 class="news_h1">研究方向</h1>
+				<div class="wenku_hot_list">
+					<ul>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">若手研究 <span class="badge">22</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">特定领域研究 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">特定领域研究 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">特定领域研究 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">特定领域研究 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">特定领域研究 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">特定领域研究 <span class="badge">122</span></a>
+						</li>
+					 
+					</ul>
+				 
+				</div>
+				
+				<h1 class="news_h1">研究课题状体</h1>
+				<div class="wenku_hot_list">
+					<ul>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">已完结 <span class="badge">22</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">未结题 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">未结题 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">未结题 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">未结题 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">未结题 <span class="badge">122</span></a>
+						</li>
+					 
+					</ul>
+					 
+				</div>
+				
+				<h1 class="news_h1">获批经费</h1>
+				<div class="wenku_hot_list">
+					<ul>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">>10000 <span class="badge">22</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">10000~50000 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">10000~50000 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">10000~50000 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">10000~50000 <span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">10000~50000 <span class="badge">122</span></a>
+						</li>
+						
+					 
+					</ul>
+					 
+				</div>
+				
+				<h1 class="news_h1">申请人</h1>
+				<div class="wenku_hot_list">
+					<ul>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">张军<span class="badge">22</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">祝林<span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">祝林<span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">祝林<span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">祝林<span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">祝林<span class="badge">122</span></a>
+						</li>
+						<li>
+							<input type="checkbox" name="category" value="2010年" /><a href="#">祝林<span class="badge">122</span></a>
+						</li>
+					 
+					</ul>
+					 
+				</div>
+                 <div class="wenku_hot_list">
+                 	<button class="btn btn-default btn-xs" style="width: 58%; display: inline;"><i class="glyphicon glyphicon-zoom-out"></i>&nbsp;筛选</button>
+                 	<button class="btn btn-default btn-xs" style="width:40%; display: inline;"><i class="glyphicon glyphicon-refresh"></i>&nbsp;重置</button>
+                 </div>
+			</section>
+
+			<section class="news_w910 col-md-9  col-sm-9">
+				<!--top-->
+				<div class="news_doc_js">
+					<div class="col-md-6 col-sm-7">
+						搜索结果 &nbsp;<b style="color: #c9302c;">120</b>&nbsp; 件
+					</div>
+
+					<div clss="col-md-6 col-sm-5">
+						<div class="btn-group  pull-right btn-group-sm" data-toggle="buttons">
+							<label class="btn btn-default  active">
+								    <input type="radio" name="options" id="option1" autocomplete="off" checked> 申请时间
+								  </label>
+						 
+							<label class="btn btn-default">
+								    <input type="radio" name="options" id="option3" autocomplete="off">截止时间
+								  </label>
+						</div>
+
+					</div>
+               
+				</div>
+				<!--
+	作者：360328893@qq.com
+	时间：2017-05-06
+	描述：top
+-->
+
+				<div class="wenku_item clearfix">
+					<a href="#/doc/136.jhtml">
+						<div class="wenku_item_img"><img src="./public/images/10141429q19h.jpg"></div>
+
+						<div class="news_wt"><span>习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版</span>
+							 
+						</div>
+
+						<div class="news_wc"> <b>时间：</b>2016-10-10<span> <b>申请人：</b>祝林&nbsp; &nbsp; <b>研究方向：</b>若手研究&nbsp;  &nbsp;<b>基金种类：</b>补助金&nbsp; &nbsp; <b>关键词：</b>若手</span> </div>
+						<div class="news_wd">“过去100年世界范围内，放任自由主义、激进社会主义、极端保守主义三大意识形态的经验教训显示，中国的国家治理必须秉承“混合至上”原则，走中国特色的国家治理道路”，中国人民大学政治学教授、比较政治研究所所长，《比较政治评论...</div>
+
+					</a>
+				</div>
+				<div class="wenku_item clearfix">
+					<a href="#/doc/136.jhtml">
+						<div class="wenku_item_img"><img src="./public/images/10141429q19h.jpg"></div>
+
+						<div class="news_wt"><span>习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版</span>
+							 
+						</div>
+
+						<div class="news_wc"> <b>时间：</b>2016-10-10<span> <b>申请人：</b>祝林&nbsp; &nbsp; <b>研究方向：</b>若手研究&nbsp;  &nbsp;<b>基金种类：</b>补助金&nbsp; &nbsp; <b>关键词：</b>若手</span> </div>
+						<div class="news_wd">“过去100年世界范围内，放任自由主义、激进社会主义、极端保守主义三大意识形态的经验教训显示，中国的国家治理必须秉承“混合至上”原则，走中国特色的国家治理道路”，中国人民大学政治学教授、比较政治研究所所长，《比较政治评论...</div>
+
+					</a>
+				</div>
+				<div class="wenku_item clearfix">
+					<a href="#/doc/136.jhtml">
+						<div class="wenku_item_img"><img src="./public/images/10141429q19h.jpg"></div>
+
+						<div class="news_wt"><span>习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版</span>
+							 
+						</div>
+
+						<div class="news_wc"> <b>时间：</b>2016-10-10<span> <b>申请人：</b>祝林&nbsp; &nbsp; <b>研究方向：</b>若手研究&nbsp;  &nbsp;<b>基金种类：</b>补助金&nbsp; &nbsp; <b>关键词：</b>若手</span> </div>
+						<div class="news_wd">“过去100年世界范围内，放任自由主义、激进社会主义、极端保守主义三大意识形态的经验教训显示，中国的国家治理必须秉承“混合至上”原则，走中国特色的国家治理道路”，中国人民大学政治学教授、比较政治研究所所长，《比较政治评论...</div>
+
+					</a>
+				</div>
+				<div class="wenku_item clearfix">
+					<a href="#/doc/136.jhtml">
+						<div class="wenku_item_img"><img src="./public/images/10141429q19h.jpg"></div>
+
+						<div class="news_wt"><span>习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版</span>
+							 
+						</div>
+
+						<div class="news_wc"> <b>时间：</b>2016-10-10<span> <b>申请人：</b>祝林&nbsp; &nbsp; <b>研究方向：</b>若手研究&nbsp;  &nbsp;<b>基金种类：</b>补助金&nbsp; &nbsp; <b>关键词：</b>若手</span> </div>
+						<div class="news_wd">“过去100年世界范围内，放任自由主义、激进社会主义、极端保守主义三大意识形态的经验教训显示，中国的国家治理必须秉承“混合至上”原则，走中国特色的国家治理道路”，中国人民大学政治学教授、比较政治研究所所长，《比较政治评论...</div>
+
+					</a>
+				</div>
+				<div class="wenku_item clearfix">
+					<a href="#/doc/136.jhtml">
+						<div class="wenku_item_img"><img src="./public/images/10141429q19h.jpg"></div>
+
+						<div class="news_wt"><span>习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版</span>
+							 
+						</div>
+
+						<div class="news_wc"> <b>时间：</b>2016-10-10<span> <b>申请人：</b>祝林&nbsp; &nbsp; <b>研究方向：</b>若手研究&nbsp;  &nbsp;<b>基金种类：</b>补助金&nbsp; &nbsp; <b>关键词：</b>若手</span> </div>
+						<div class="news_wd">“过去100年世界范围内，放任自由主义、激进社会主义、极端保守主义三大意识形态的经验教训显示，中国的国家治理必须秉承“混合至上”原则，走中国特色的国家治理道路”，中国人民大学政治学教授、比较政治研究所所长，《比较政治评论...</div>
+
+					</a>
+				</div>
+				<div class="wenku_item clearfix">
+					<a href="#/doc/136.jhtml">
+						<div class="wenku_item_img"><img src="./public/images/10141429q19h.jpg"></div>
+
+						<div class="news_wt"><span>习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版</span>
+							 
+						</div>
+
+						<div class="news_wc"> <b>时间：</b>2016-10-10<span> <b>申请人：</b>祝林&nbsp; &nbsp; <b>研究方向：</b>若手研究&nbsp;  &nbsp;<b>基金种类：</b>补助金&nbsp; &nbsp; <b>关键词：</b>若手</span> </div>
+						<div class="news_wd">“过去100年世界范围内，放任自由主义、激进社会主义、极端保守主义三大意识形态的经验教训显示，中国的国家治理必须秉承“混合至上”原则，走中国特色的国家治理道路”，中国人民大学政治学教授、比较政治研究所所长，《比较政治评论...</div>
+
+					</a>
+				</div>
+				<div class="wenku_item clearfix">
+					<a href="#/doc/136.jhtml">
+						<div class="wenku_item_img"><img src="./public/images/10141429q19h.jpg"></div>
+
+						<div class="news_wt"><span>习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版</span>
+							 
+						</div>
+
+						<div class="news_wc"> <b>时间：</b>2016-10-10<span> <b>申请人：</b>祝林&nbsp; &nbsp; <b>研究方向：</b>若手研究&nbsp;  &nbsp;<b>基金种类：</b>补助金&nbsp; &nbsp; <b>关键词：</b>若手</span> </div>
+						<div class="news_wd">“过去100年世界范围内，放任自由主义、激进社会主义、极端保守主义三大意识形态的经验教训显示，中国的国家治理必须秉承“混合至上”原则，走中国特色的国家治理道路”，中国人民大学政治学教授、比较政治研究所所长，《比较政治评论...</div>
+
+					</a>
+				</div>
+				<div class="wenku_item clearfix">
+					<a href="#/doc/136.jhtml">
+						<div class="wenku_item_img"><img src="./public/images/10141429q19h.jpg"></div>
+
+						<div class="news_wt"><span>习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版</span>
+							 
+						</div>
+
+						<div class="news_wc"> <b>时间：</b>2016-10-10<span> <b>申请人：</b>祝林&nbsp; &nbsp; <b>研究方向：</b>若手研究&nbsp;  &nbsp;<b>基金种类：</b>补助金&nbsp; &nbsp; <b>关键词：</b>若手</span> </div>
+						<div class="news_wd">“过去100年世界范围内，放任自由主义、激进社会主义、极端保守主义三大意识形态的经验教训显示，中国的国家治理必须秉承“混合至上”原则，走中国特色的国家治理道路”，中国人民大学政治学教授、比较政治研究所所长，《比较政治评论...</div>
+
+					</a>
+				</div>
+				<div class="wenku_item clearfix">
+					<a href="#/doc/136.jhtml">
+						<div class="wenku_item_img"><img src="./public/images/10141429q19h.jpg"></div>
+
+						<div class="news_wt"><span>习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版习近平的国家治理现代化思想出版</span>
+							 
+						</div>
+
+						<div class="news_wc"> <b>时间：</b>2016-10-10<span> <b>申请人：</b>祝林&nbsp; &nbsp; <b>研究方向：</b>若手研究&nbsp;  &nbsp;<b>基金种类：</b>补助金&nbsp; &nbsp; <b>关键词：</b>若手</span> </div>
+						<div class="news_wd">“过去100年世界范围内，放任自由主义、激进社会主义、极端保守主义三大意识形态的经验教训显示，中国的国家治理必须秉承“混合至上”原则，走中国特色的国家治理道路”，中国人民大学政治学教授、比较政治研究所所长，《比较政治评论...</div>
+
+					</a>
+				</div>
+
+			 
+
+				<div class="page-large">
+					<div style="display:inline-block;">
+						<a class="Num on" href="#" onclick="location.href='#'">1</a>
+						<a class="Num" href="#" onclick="location.href='#'">2</a>
+						<a class="Num" href="#" onclick="location.href='#'">3</a>
+						<a class="Num" href="#" onclick="location.href='#'">4</a>
+						<a class="Num" href="#" onclick="location.href='#'">5</a>
+						<a class="Num none">...</a>
+						<a class="Num" href="#" onclick="location.href='#'">24</a>
+						<a class="next-page" href="#" onclick="location.href=''">></a>
+					</div>
+				</div>
+			</section>
+			
+
+
+		</div>
+		<footer class="footer">
+			<div class="footer-link container">
+				<p style="color: #ffffff">此处引入公共底部文件</p>
+			</div>
+
+		</footer>
+
+	</body>
+
+</html>

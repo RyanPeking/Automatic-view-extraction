@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>d3 example</title>
+<script type="text/javascript" src="http://d3js.org/d3.v5.min.js"></script>
+<script type="text/javascript" src="./d3.layout.cloud.js"></script>
+<style>
+.content {
+	display: flex;
+	min-height: 100vh;
+}
+.content .left {
+	width: 50%;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.content .right {
+	width: 50%;
+	overflow: visible;	
+    word-break: break-word;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+</style>
+</head>
+<body>
+<script>
+let initData;
+let nodesObj = {};
+let currentIndex = 0
+
+let svgRight;
+let svgLeft;
+
+let colorWords;
+let layoutWords;
+
+d3.json("https://gist.githubusercontent.com/mbostock/4062045/raw/5916d145c8c048a6e3086915a6be464467391c62/miserables.json").then((res) => {
+  initData = res
+  drawInit(res)
+  res.nodes.forEach((item, index) => {
+	nodesObj[item.id] = item
+  })
+})
+
+function drawInit(data) {
+	drawWords(data, true)
+	drawRect(data, true)
+}
+
+function drawRect(data, flag) {
+  const nodes = data.nodes.map(d => Object.create(d));
+  
+  if (flag) {
+	svgLeft = d3.select(".left").append("svg")
+  } else {
+	svgLeft = d3.select("svg")
+  }
+  
+  const scale = d3.scaleOrdinal()
+	.domain(d3.range(nodes.length))
+	.range(d3.schemeCategory10)
+  
+  let objRect = {}
+  
+  const rectNodes = data.nodes.map((d, index) => {
+	if (objRect.hasOwnProperty(d.group)) {
+	  return -1
+	} else {
+	  objRect[d.group] = 1
+	  return d.group
+	}
+  }).filter((value) => value != -1)
+  
+  svgLeft.attr("width", 470).attr("height", `${Math.ceil(rectNodes.length / 2) * 80}`)
+  
+  const node = svgLeft.append("g")
+      .attr("class", "labels")
+      .attr("stroke", "#fff")
+      .attr("stroke-width", 1.5)
+      .selectAll("g")
+      .data(rectNodes)
+      .join("g")
+	  .attr("transform", function(d, i) { return `translate(${10 + i%2 * 220}, ${parseInt(i / 2) * 80})` })
+	  .style("cursor", "pointer")
+	  .on("mouseenter", function(d, i) {
+		if (currentIndex != d) {
+		    currentIndex = d
+            d3.select(".right").select("svg").remove()
+            d3.select(".left").select("svg").remove()
+            drawRect(initData, true)
+            drawWords(initData, true)
+        }
+	  })
+	  
+  const rect = svgLeft
+      .select(".labels")
+	  .selectAll("g")
+	  .append("rect")
+	  .attr("width", 200)
+	  .attr("height", 50)	  
+	  .attr("rx", 10)
+	  .attr("ry", 10)
+      .attr("fill", function(d, i) {
+		if (d == currentIndex) {
+		  return scale(d);
+		} else {
+		  return "#ddd"
+		}
+	  })
+	  
+  const text = svgLeft.select(".labels")
+      .selectAll("g")
+	  .append("text")
+	  .text(function(d) {
+		return d
+	  })
+	  .attr('fill', '#333')
+	  .attr('stroke', '#fff')
+	  .attr('stroke-width', 0.5)
+      .style('font-size', function(d) {
+        return `${16}px`;
+      })
+	  .style('background', 'transparent')
+	  .style('color', '#333')
+      .style('font-family', 'Impact')
+      .attr('text-anchor', 'middle')
+	  .attr('transform', `translate(${95}, ${30})`)
+}
+
+function drawWords(data, flag) {
+  const width = 500;
+  const height = 500;
+  
+  colorWords = d3.scaleOrdinal(d3.schemeCategory10);
+  
+  let dataCurrent = initData.nodes.filter((item, index) => {
+	return item.group == currentIndex
+  }).map((item, index) => {
+	return item.id
+  })
+  
+  if (flag) {
+	svgRight = d3.select(".right").append("svg")
+  } else {
+	svgRight = d3.select(".right").select("svg")
+  }
+  
+  svgRight.attr('width', width).attr('height', height);
+
+  layoutWords = d3.layout.cloud()
+    .size([500, 500])
+    .words(
+      dataCurrent.map(function(d) {
+        return { text: d, size: 10 + Math.random() * 90 };
+      })
+    )
+    .padding(5)
+    .rotate(function() {
+      return Math.random() * 45;
+    })
+    .font('Impact')
+    .fontSize(function(d) {
+      return d.size;
+    })
+    .on('end', draw);
+
+  layoutWords.start();
+}
+
+function draw(words) {
+  svgRight
+    .append('g')
+    .attr('transform', `translate(${layoutWords.size()[0] / 2},${layoutWords.size()[1] / 2})`)
+    .selectAll('text')
+    .data(words)
+    .enter()
+    .append('text')
+    .attr('fill', (_, i) => colorWords(i))
+    .style('font-size', function(d) {
+      return `${d.size}px`;
+    })
+    .style('font-family', 'Impact')
+    .attr('text-anchor', 'middle')
+    .attr('transform', function(d) {
+      return `translate(${[d.x, d.y]})rotate(${d.rotate})`;
+    })
+    .text(function(d) {
+      return d.text;
+    });
+ }
+</script>
+<div class="content">
+<div class="left">
+</div>
+<div class="right">
+</div>
+</div>
+</body>
+</html>

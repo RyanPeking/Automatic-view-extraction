@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="user-scalable=no,width=device-width, initial-scale=1">
+<title>数据汇总</title>
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/data.css" rel="stylesheet">
+	<script src="js/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<!--[if lt IE 9]>
+<script src="js/respond.min.js"></script>
+<![endif]-->   
+<script type="text/javascript">
+		//获取设备渲染像素宽度
+		var iWidth = document.documentElement.clientWidth;
+		document.getElementsByTagName('html')[0].style.fontSize = iWidth/10 + 'px';	
+		
+</script>	
+</head>
+
+
+<body>
+
+<!--navtop-->
+<div class="navtop">
+	<div class="container">
+		<div class="navbar navbar-default" role="navigation">
+			<!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
+			<a href="#" class="navbar-brand"><img src="images/logo.png" ></a>
+			<div class="navbar-header">			
+				<!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="sr-only">Toggle Navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
+			<div class="collapse navbar-collapse navbar-responsive-collapse">
+				<ul class="nav navbar-nav" >
+					<li ><a href="#">宏观政策</a></li>
+					<li ><a href="#">产业动向</a></li>
+					<li ><a href="#">科研动态</a></li>
+					<li ><a href="#">热点关注</a></li>
+					<li ><a href="#">监测快报</a></li>
+					<li ><a href="#">舆情监测</a></li>
+					<li class="login" ><a href="#">登录</a></li>
+					<li class="register"><a href="#">注册</a></li>
+				</ul>
+			</div>
+			<!--end collapse-->
+		</div>
+		<!--end navbar-->
+	</div>
+	<!--end container-->
+</div>
+<!--end navtop-->
+
+<!--cont-->
+<div class="top-head container">
+	<div class="row">
+		<div class="col-md-6 col-xs-12 title">
+			监测主题
+		</div>
+		<div class="col-md-6 col-xs-12 list">
+			<ul class="">
+				<li class="current">数据汇总</li>
+				<li>内容分析</li>
+				<li >关键词配置</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="body container">
+	<div class="row">	
+		<div class="toggle">
+			<img src="images/right_arrow.png" onclick="toggle()">
+		</div>
+		<div class="col-md-3 settings-left">
+			<div class="row">
+				<div class="btns">
+					<button class="done">
+						筛选
+					</button>
+					<button class="reset">
+						重置
+					</button>
+				</div>
+				<div class="title">
+					<div>
+						时间
+					</div>
+					<button>
+						确认
+					</button>
+				</div>
+				<div class="time">
+					<div class="input-group date form_date col-md-11" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+						<input class="form-control" size="16" type="text" value="" readonly placeholder="开始日期">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+					</div>
+					<input type="hidden" id="dtp_input2" value="" /><br/>
+				</div>
+				<div class="time">
+					<div class="input-group date form_date2 col-md-11" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd">
+						<input class="form-control" size="16" type="text" value="" readonly placeholder="开始日期">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+					</div>
+					<input type="hidden" id="dtp_input3" value="" /><br/>
+				</div>
+				<div class="emotion menu-title">
+					情感
+					<img src="images/more.png">
+				</div>
+				<ul class="menu">
+					<li><input type="checkbox" name="emotion">全部</li>
+					<li><input type="checkbox" name="emotion">正面</li>
+					<li><input type="checkbox" name="emotion">中性</li>
+					<li><input type="checkbox" name="emotion">负面</li>
+				</ul>
+				<div class="order menu-title">
+					排序
+					<img src="images/more.png">
+				</div>
+				<ul class="menu">
+					<li><input type="checkbox" name="order">时间降序</li>
+					<li><input type="checkbox" name="order">时间升序</li>
+					<li><input type="checkbox" name="order">权重降序</li>
+					<li><input type="checkbox" name="order">热度降序</li>
+				</ul>			
+				<div class="prop menu-title">
+					属性
+					<img src="images/more.png">
+				</div>
+				<ul class="menu">
+					<li><input type="checkbox" name="prop">新闻</li>
+					<li><input type="checkbox" name="prop">博客</li>
+					<li><input type="checkbox" name="prop">搜索引擎</li>
+				</ul>
+				<div class="source menu-title">
+					来源
+					<img src="images/more.png">
+				</div>
+				<ul class="menu">
+					<li><input type="checkbox" name="source">百度新闻</li>
+					<li><input type="checkbox" name="source">新浪新闻</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-9 col-xs-12 content-right">
+			<div class="col-md-4 col-xs-12">
+				<span>搜索结果 <em style="color:red;">671</em> 篇</span>
+				<select>
+					<option>全文</option>
+					<option>标题</option>
+				</select>
+			</div>
+			<div class="col-md-8 col-xs-12 search">
+				<input placeholder="请输入关键词，支持多关键词检索">
+				<button>搜索</button>
+			</div>
+			<div style="clear:both;"></div>
+			<div class="item">
+				<div class="title">					
+					标题标题标题标题标题标题标题标题标题
+				</div>
+				<div class="time">	
+					<span>2017-07-21</span>
+					<span>日本</span>
+					<button>翻译</button>
+					<img src="images/favorite-selected.png"/>
+				</div>
+				<div class="cont-text">
+					内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+				</div>
+			</div>
+			<div class="item">
+				<div class="title">					标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题
+				</div>
+				<div class="time">	
+					<span>2017-07-21</span>
+					<span>日本</span>
+					<button>翻译</button>
+					<img src="images/favorite.png"/>
+				</div>
+				<div class="cont-text">
+					内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+				</div>
+			</div>
+			<div class="item">
+				<div class="title">					标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题
+				</div>
+				<div class="time">	
+					<span>2017-07-21</span>
+					<span>日本</span>
+					<button>翻译</button>
+					<img src="images/favorite.png"/>
+				</div>
+				<div class="cont-text">
+					内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+				</div>
+			</div>
+			<div class="item">
+				<div class="title">					标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题
+				</div>
+				<div class="time">	
+					<span>2017-07-21</span>
+					<span>日本</span>
+					<button>翻译</button>
+					<img src="images/favorite.png"/>
+				</div>
+				<div class="cont-text">
+					内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>
+</div>
+<!--end cont-->
+
+<div class="footer">
+	<div class="list container">
+		<ul>
+			<li><a href="#">加入收藏</a></li>
+			<li><a href="#">设为首页</a></li>
+			<li><a href="#">管理登录</a></li>
+		</ul>
+	</div>
+	<div class="info">
+		<span class="desp">
+			Powered TURING Copyright 2016-2017 news.turing.ac.cn, All rights reserved. V1.2.11
+		</span>
+	</div>
+</div>
+
+<script>
+	var clicked = [false,false,false,false];
+	$(function(){
+		$(".menu-title").click(function(){
+			var index = $(".menu-title").index(this);
+			$(this).next().slideToggle();
+			if(clicked[index] == false){
+				$(this).children("img").attr("src","images/more_unfold.png");
+				clicked[index] = true;
+			}else{
+				$(this).children("img").attr("src","images/more.png");
+				clicked[index] = false;
+			}
+		})		
+	})
+	var right = true;
+	function toggle(){
+		if(right){
+			$(".settings-left").css("marginLeft",0);
+			$(".toggle img").attr("src","images/left_arrow.png")
+			right=false;
+		}else{
+			$(".settings-left").css("marginLeft","-100%");
+			$(".toggle img").attr("src","images/right_arrow.png")
+			right=true;
+		}		
+	}
+	$('.form_date').datetimepicker({
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+	$('.form_date2').datetimepicker({
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+</script>
+</body>
+</html>

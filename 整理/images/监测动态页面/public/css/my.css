@@ -1,0 +1,53 @@
+a{text-decoration:none !important;}
+.news_hot{border:1px solid #e7e7e7; box-sizing:border-box; float:left;}
+.news_hot h1{height:50px; background-color:#ffffff; border-bottom:1px solid #e7e7e7; box-sizing:border-box; padding:0 20px; line-height:50px; color:#1a1a1a; font-size:20px; font-weight:normal;}
+.news_hot_list{padding:20px 17px; background-color:#ffffff;}
+.news_hot_list li{padding-left:12px; line-height:20px; position:relative; margin-bottom:18px;}
+.news_hot_list li:before{content:""; position:absolute; left:0; top:7px; width:4px; height:4px; background-color:#3489d0; border-radius:100%; -moz-border-radius:100%; -o-border-radius:100%; -webkit-border-radius:100%;}
+.news_hot_list li a{color:#1a1a1a; font-size:14px;}
+.news_hot_list li a:hover{color:#3489d0;}
+
+.news_w910{float:right;}
+
+.news_container{width:1200px; margin:0 auto;}
+
+.news_search{margin-bottom:15px;}
+
+.col-news{width: 18%;}
+
+.news_search select{
+  height: 46px;
+  line-height: 30px;
+  font-size:18px;
+  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+  border: solid 1px #ccc;
+  /*很关键：将默认的select选择框样式清除*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background: url("../images/arrow.png") no-repeat scroll right center #ffffff;
+  background-position: 95% 50%;
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 14px；
+}
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+.news_search select::-ms-expand { display: none; }
+
+.news_doc_js{padding:8px 10px; border:1px solid #e7e7e7; background-color:#fff; position:relative; margin-bottom:20px; height: 48px; line-height: 30px;}
+
+.wenku_item .news_wd{color:#9d9d9d; font-size:12px; line-height:20px; margin-top:24px; position:relative;}
+.wenku_item .news_wd:before{width:80%; height:1px; content:""; background-color:#f0f0f0; position:absolute; right:0; top:-10px;}
+
+.wenku_item .news_wt{color:#1a1a1a; font-size:14px;  font-weight:600;}
+.wenku_item .news_wt img{margin-left:8px;}
+.wenku_item .news_wt span{color: #1a1a1a;}
+
+
+.wenku_item .news_wc{color:#333333; font-size:12px; margin-top:14px; display: block; height: 20px;}
+.wenku_item .news_wc span{line-height: 22px; padding: 0px 10px;}
+.wenku_item .news_wc em{float:right;}
+ .news_left{padding:0px !important;}
+ .news_h1{margin:0px;}
+ .wenku_hot_list ul li span{float: right;}

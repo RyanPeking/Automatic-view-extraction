@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="user-scalable=no,width=device-width, initial-scale=1">
+<title></title>
+   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/common.css" rel="stylesheet">
+   <link href="css/index.css" rel="stylesheet">
+   <script src="js/jquery.min.js"></script>
+   <script src="bootstrap/js/bootstrap.min.js"></script>
+<!--[if lt IE 9]>
+<script src="js/respond.min.js"></script>
+<![endif]-->   
+<script type="text/javascript">
+		//获取设备渲染像素宽度
+		var iWidth = document.documentElement.clientWidth;
+		document.getElementsByTagName('html')[0].style.fontSize = iWidth/10 + 'px';	
+		$(function(){
+			$(".tab-btns li").click(function(){
+				var index = $(this).index();
+				$(".tab-btns li").removeClass("active").eq(index).addClass("active");
+				$(".phb-cont").css("display","none");
+				$(".phb-cont").eq(index).css("display","block");
+			})		
+		})
+</script>	
+</head>
+
+
+<body>
+
+<!--navtop-->
+<div class="navtop">
+	<div class="container">
+		<div class="navbar navbar-default" role="navigation">
+			<!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
+			<a href="#" class="navbar-brand"><img src="images/logo.png" ></a>
+			<div class="navbar-header">			
+				<!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="sr-only">Toggle Navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
+			<div class="collapse navbar-collapse navbar-responsive-collapse">
+				<ul class="nav navbar-nav" >
+					<li ><a href="#">宏观政策</a></li>
+					<li ><a href="#">产业动向</a></li>
+					<li ><a href="#">科研动态</a></li>
+					<li ><a href="#">热点关注</a></li>
+					<li ><a href="#">监测快报</a></li>
+					<li ><a href="#">舆情监测</a></li>
+					<li class="login" ><a href="#">登录</a></li>
+					<li class="register"><a href="#">注册</a></li>
+				</ul>
+			</div>
+			<!--end collapse-->
+		</div>
+		<!--end navbar-->
+	</div>
+	<!--end container-->
+</div>
+<!--end navtop-->
+
+<!--cont-->
+<div class="cont">
+	<!--上部新闻列表-->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-sm-12 tj">
+				<div class="tab">
+					<div class="tab_head">
+						<a href="#">
+							<div class="under_line">
+								<img src="images/icon1.png" />								
+								<div>推荐</div>
+							</div>
+						</a>
+					</div>
+					<ul class="tab_cont">
+						<li>
+							<h3 class="text">
+								<a href="#">国务院关于加快发展冷链物流保障食品安全促进消费的意见</a>
+							</h3>
+							<h4 class="time">
+								2017-07-09
+							</h4>
+						</li>
+						<li>
+							<h3 class="text">
+								<a href="#">国务院关于加快发展冷链物流保障食品安全促进消费的意见</a>
+							</h3>
+							<h4 class="time">
+								2017-07-09
+							</h4>
+						</li>
+						<li>
+							<h3 class="text">
+								<a href="#">国务院关于加快发展冷链物流保障食品安全促进消费的意见</a>
+							</h3>
+							<h4 class="time">
+								2017-07-09
+							</h4>
+						</li>
+						<li>
+							<h3 class="text">
+								<a href="#">国务院关于加快发展冷链物流保障食品安全促进消费的意见</a>
+							</h3>
+							<h4 class="time">
+								2017-07-09
+							</h4>
+						</li>
+						<li>
+							<h3 class="text">
+								<a href="#">国务院关于加快发展冷链物流保障食品安全促进消费的意见</a>
+							</h3>
+							<h4 class="time">
+								2017-07-09
+							</h4>
+						</li>
+					</ul>
+				</div>				
+			</div>
+			<div class="col-md-9 col-sm-12 ttxw">
+				<div class="right_head">
+					<a href="#">
+						<div class="news_title">
+							<img src="images/icon2.png" />
+							头条新闻/
+							<p>Focus</p>
+						</div>
+					</a>
+					<div class="right">
+						今日更新:200篇
+					</div>
+				</div>
+				<div class="row">
+					<!--右侧头条新闻图文-->
+					<div class="col-md-6 col-xs-12 item">
+						<div class="pic">
+							<img src="images/news_pic.png"/>
+						</div>
+						<div class="text">
+							<h2 class="title">
+								<a href="#">nba赛季场均三双 小托马斯地表最强175 场均三双的威</a>
+							</h2>
+							<h3 class="cont">
+								当时，很多听惯了旧口号ILoveThisGame!的老球迷对此嗤之以鼻。据了解，更换口号和NBA之前
+							</h3>
+						</div>
+					</div>
+					<div class="col-md-6 col-xs-12 item">
+						<div class="pic">
+							<img src="images/news_pic.png"/>
+						</div>
+						<div class="text">
+							<h2 class="title">
+								<a href="#">nba赛季场均三双 小托马斯地表最强175 场均三双的威</a>
+							</h2>
+							<h3 class="cont">
+								当时，很多听惯了旧口号ILoveThisGame!的老球迷对此嗤之以鼻。据了解，更换口号和NBA之前
+							</h3>
+						</div>
+					</div>
+					<div class="col-md-6 col-xs-12 item">
+						<div class="pic">
+							<img src="images/news_pic.png"/>
+						</div>
+						<div class="text">
+							<h2 class="title">
+								<a href="#">nba赛季场均三双 小托马斯地表最强175 场均三双的威</a>
+							</h2>
+							<h3 class="cont">
+								当时，很多听惯了旧口号ILoveThisGame!的老球迷对此嗤之以鼻。据了解，更换口号和NBA之前
+							</h3>
+						</div>
+					</div>
+					<div class="col-md-6 col-xs-12 item">
+						<div class="pic">
+							<img src="images/news_pic.png"/>
+						</div>
+						<div class="text">
+							<h2 class="title">
+								<a href="#">nba赛季场均三双 小托马斯地表最强175 场均三双的威</a>
+							</h2>
+							<h3 class="cont">
+								当时，很多听惯了旧口号ILoveThisGame!的老球迷对此嗤之以鼻。据了解，更换口号和NBA之前
+							</h3>
+						</div>
+					</div>
+					<!--end 右侧头条新闻图文-->					
+				</div>
+				<div class="row">
+					<!--右侧新闻列表-->
+					<div class="col-md-6 col-sm-6 col-xs-12 list">
+						<ul>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+						</ul>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-12 list">
+						<ul>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+							<li><a href="#">国家邮政局：快递服务已结束“春运模式”</a></li>
+						</ul>
+					</div>
+					<!--end 右侧新闻列表-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="ggw">
+			广告位
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9 col-sm-12 zxgx">
+				<a href="#">
+					<div class="zxgx-title">
+						<div class="under_line under_line1">
+							<img src="images/icon3.png" />
+							最新更新
+						</div>
+					</div>
+				</a>
+				<div class="zxgx-cont">
+					<ul>
+						<li>
+							<img src="images/zxgx_pic.png">
+							<div class="text">
+								<h2 class="title"><a href="#">乐视手机发布3款二代旗舰新品 硬件负利迎接</a></h2>
+								<h3 class="detail">砍柴网讯（北京）4月20日，在乐视体育生态中心，乐视举办了无破界 不生态为主题的乐视春季新品发布会。全球共有2600名媒体记者和近8000名乐迷现场见证这一盛会</h3>
+								<h3 class="extra">
+									未知/业界/2016-04-23
+								</h3>
+							</div>
+						</li>
+						<li>
+							<img src="images/zxgx_pic.png">
+							<div class="text">
+								<h2 class="title"><a href="#">乐视手机发布3款二代旗舰新品 硬件负利迎接</a></h2>
+								<h3 class="detail">砍柴网讯（北京）4月20日，在乐视体育生态中心，乐视举办了无破界 不生态为主题的乐视春季新品发布会。全球共有2600名媒体记者和近8000名乐迷现场见证这一盛会</h3>
+								<h3 class="extra">
+									未知/业界/2016-04-23
+								</h3>
+							</div>
+						</li>
+						<li>
+							<img src="images/zxgx_pic.png">
+							<div class="text">
+								<h2 class="title"><a href="#">乐视手机发布3款二代旗舰新品 硬件负利迎接</a></h2>
+								<h3 class="detail">砍柴网讯（北京）4月20日，在乐视体育生态中心，乐视举办了无破界 不生态为主题的乐视春季新品发布会。全球共有2600名媒体记者和近8000名乐迷现场见证这一盛会</h3>
+								<h3 class="extra">
+									未知/业界/2016-04-23
+								</h3>
+							</div>
+						</li>
+						<li>
+							<img src="images/zxgx_pic.png">
+							<div class="text">
+								<h2 class="title"><a href="#">乐视手机发布3款二代旗舰新品 硬件负利迎接</a></h2>
+								<h3 class="detail">砍柴网讯（北京）4月20日，在乐视体育生态中心，乐视举办了无破界 不生态为主题的乐视春季新品发布会。全球共有2600名媒体记者和近8000名乐迷现场见证这一盛会</h3>
+								<h3 class="extra">
+									未知/业界/2016-04-23
+								</h3>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-12">
+				<div class="phb-title">
+					<a href="#">
+						<div class="under_line under_line2">
+							<img src="images/icon4.png">
+							<div>排行榜</div>
+						</div>
+					</a>
+					<ul class="tab-btns">
+						<li class="active">总排行</li>
+						<li>月排行</li>
+						<li>周排行</li>
+					</ul>
+				</div>
+				<ul class="phb-cont tab-1">
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+				</ul>
+				<ul class="phb-cont tab-2" style="display:none;">
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一月预定百万台，MOTO能否王者归来</a></li>
+				</ul>
+				<ul class="phb-cont tab-3" style="display:none;">
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+					<li><a href="#">一周预定百万台，MOTO能否王者归来</a></li>
+				</ul>
+				<div class="kb-title">
+					<div class="under_line">
+					<img src="images/icon5.png" />
+					<div>快报</div>
+					</div>
+				</div>
+				<ul class="kb-cont">
+					<li><div>监测快报</div></li>
+					<li><div>监测快报</div></li>
+					<li><div>监测快报</div></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--end cont-->
+
+<div class="footer">
+	<div class="list container">
+		<ul>
+			<li><a href="#">加入收藏</a></li>
+			<li><a href="#">设为首页</a></li>
+			<li><a href="#">管理登录</a></li>
+		</ul>
+	</div>
+	<div class="info">
+		<span class="desp">
+			Powered TURING Copyright 2016-2017 news.turing.ac.cn, All rights reserved. V1.2.11
+		</span>
+	</div>
+</div>
+</body>
+</html>

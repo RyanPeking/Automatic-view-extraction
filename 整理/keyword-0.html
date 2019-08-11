@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="user-scalable=no,width=device-width, initial-scale=1">
+<title>关键词配置</title>
+   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/common.css" rel="stylesheet">
+   <link href="css/keyword.css" rel="stylesheet">
+   <script src="js/jquery.min.js"></script>
+   <script src="bootstrap/js/bootstrap.min.js"></script>
+<!--[if lt IE 9]>
+<script src="js/respond.min.js"></script>
+<![endif]-->   
+<script type="text/javascript">
+		//获取设备渲染像素宽度
+		var iWidth = document.documentElement.clientWidth;
+		document.getElementsByTagName('html')[0].style.fontSize = iWidth/10 + 'px';	
+		
+</script>	
+</head>
+
+
+<body>
+
+<!--navtop-->
+<div class="navtop">
+	<div class="container">
+		<div class="navbar navbar-default" role="navigation">
+			<!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
+			<a href="#" class="navbar-brand"><img src="images/logo.png" ></a>
+			<div class="navbar-header">			
+				<!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="sr-only">Toggle Navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
+			<div class="collapse navbar-collapse navbar-responsive-collapse">
+				<ul class="nav navbar-nav" >
+					<li ><a href="#">宏观政策</a></li>
+					<li ><a href="#">产业动向</a></li>
+					<li ><a href="#">科研动态</a></li>
+					<li ><a href="#">热点关注</a></li>
+					<li ><a href="#">监测快报</a></li>
+					<li ><a href="#">舆情监测</a></li>
+					<li class="login" ><a href="#">登录</a></li>
+					<li class="register"><a href="#">注册</a></li>
+				</ul>
+			</div>
+			<!--end collapse-->
+		</div>
+		<!--end navbar-->
+	</div>
+	<!--end container-->
+</div>
+<!--end navtop-->
+
+<!--cont-->
+<div class="top-head container">
+	<div class="row">
+		<div class="col-md-6 col-xs-12 title">
+			监测主题
+		</div>
+		<div class="col-md-6 col-xs-12 list">
+			<ul class="">
+				<li>数据汇总</li>
+				<li>内容分析</li>
+				<li class="current">关键词配置</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="tabs container">
+	<div class="row">
+		<div class="col-md-12 col-xs-12 title">
+			<ul class="tab-list">
+				<li>基本模式</li>
+				<li class="current">高级模式</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="body container">
+	<div class="row">
+		<div class="col-md-6 col-xs-12 settings-left">
+			<div class="title">
+				关键词：
+			</div>
+			<div class="gjc">
+				<div class="contain-all">
+					<div class="title2">包含以下全部的关键词：</div>
+					<textarea class="contain-all-textarea"></textarea>
+				</div>
+				<div class="contain-any">
+					<div class="title2">包含以下任意一关键词：</div>
+					<textarea class="contain-any-textarea"></textarea>
+				</div>
+				<div class="without-any">
+					<div class="title2">不包含以下任意一关键词：</div>
+					<textarea class="without-any-textarea"></textarea>
+				</div>
+				<div class="limit-time">
+					<div class="title2">限定要搜索的网页的时间是：</div>
+					<select>
+						<option>全部时间</option>
+						<option>部分时间</option>
+					</select>
+				</div>
+				<div class="location">
+					<div class="title2">查询关键词位于：</div>
+					<div class="radios">
+						<div><input type="radio" name="location"/>网页的任何地方</div>
+						<div><input type="radio" name="location"/>仅网页的标题中</div>
+						<div><input type="radio" name="location"/>仅在网页的URL中</div>						
+					</div>
+				</div>
+				<div class="site">
+					<div class="title2">限定要搜索指定的网站地址 例如：http://turing.ac.cn</div>
+					<div class="input">
+						<input />						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-xs-12 settings-right2">
+			<div class="title">
+				数据来源：
+			</div>
+			<div class="origin">
+				<div class="news">
+					<div class="title3">
+						新闻
+					</div>
+					<ul class="list1">
+						<li><input type="checkbox" name="news"/>百度新闻</li>
+						<li><input type="checkbox" name="news"/>搜狗新闻</li>
+						<li><input type="checkbox" name="news"/>360新闻</li>
+						<li><input type="checkbox" name="news"/>微软必应</li>
+					</ul>
+				</div>
+				<div class="search">
+					<div class="title3">
+						网页/知乎/微信/百科
+					</div>
+					<ul class="list1">
+						<li><input type="checkbox" name="search"/>百度搜索</li>
+						<li><input type="checkbox" name="search"/>360搜索</li>
+						<li><input type="checkbox" name="search"/>微信搜索</li>
+						<li><input type="checkbox" name="search"/>互动百科</li>
+						<li><input type="checkbox" name="search"/>搜狗搜索</li>
+						<li><input type="checkbox" name="search"/>必应搜索</li>
+					</ul>
+				</div>
+				<div class="search">
+					<div class="title3">
+						学术
+					</div>
+					<ul class="list1">
+						<li><input type="checkbox" name="search"/>百度学术</li>
+						<li><input type="checkbox" name="search"/>搜狗学术</li>
+						<li><input type="checkbox" name="search"/>必应学术</li>
+						<li><input type="checkbox" name="search"/>360学术</li>
+						<li><input type="checkbox" name="search"/>中科院文献</li>
+					</ul>
+				</div>
+				<div class="domain">
+					<div class="title3">
+						产业领域
+					</div>
+					<ul class="list2">
+						<div class="head">新一代信息技术产业</div>
+						<li><input type="checkbox" name="domain1"/>下一代信息网络产业</li>
+						<li><input type="checkbox" name="domain1"/>信息技术服务</li>
+						<li><input type="checkbox" name="domain1"/>电子核心产业</li>
+						<li><input type="checkbox" name="domain1"/>网络信息安全产品和服务</li>
+						<li><input type="checkbox" name="domain1"/>人工智能</li>
+					</ul>
+					<ul class="list2">
+						<div class="head">高端装备制造产业</div>
+						<li><input type="checkbox" name="domain2"/>智能制造装备产业</li>
+						<li><input type="checkbox" name="domain2"/>航空产业</li>
+						<li><input type="checkbox" name="domain2"/>卫星及应用产业</li>
+						<li><input type="checkbox" name="domain2"/>轨道交通装备产业</li>
+						<li><input type="checkbox" name="domain2"/>海洋工程装备产业</li>
+					</ul>
+					<ul class="list2">
+						<div class="head">新材料产业</div>
+						<li><input type="checkbox" name="domain3"/>新型功能材料产业</li>
+						<li><input type="checkbox" name="domain3"/>先进结构材料产业</li>
+					</ul>
+					<ul class="list2">
+						<div class="head">Th物产业</div>
+						<li><input type="checkbox" name="domain4"/>生物医药产业</li>
+						<li><input type="checkbox" name="domain4"/>生物医学工程产业</li>
+					</ul>
+				</div>
+				<div class="mine">
+					<div class="title3">
+						我的采集源
+					</div>
+					<ul class="list2">
+						<li><input type="checkbox" name="mine"/>我的采集源</li>
+						<li><input type="checkbox" name="mine"/>我的采集源</li>
+						<li><input type="checkbox" name="mine"/>我的采集源</li>
+						<li><input type="checkbox" name="mine"/>我的采集源</li>
+					</ul>
+					<ul class="list2">
+						<li><input type="checkbox" name="mine"/>我的采集源</li>
+						<li><input type="checkbox" name="mine"/>我的采集源</li>
+						<li><input type="checkbox" name="mine"/>我的采集源</li>
+						<li><input type="checkbox" name="mine"/>我的采集源</li>
+					</ul>					
+				</div>
+			</div>
+		</div>		
+		<div style="clear:both;"></div>
+		<div class="btns">
+			<div class="btn-left">
+				<button class="reset">清空</button>
+			</div>
+			<div class="btn-right">
+				<button class="submit-start">下一步</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!--end cont-->
+
+<div class="footer">
+	<div class="list container">
+		<ul>
+			<li><a href="#">加入收藏</a></li>
+			<li><a href="#">设为首页</a></li>
+			<li><a href="#">管理登录</a></li>
+		</ul>
+	</div>
+	<div class="info">
+		<span class="desp">
+			Powered TURING Copyright 2016-2017 news.turing.ac.cn, All rights reserved. V1.2.11
+		</span>
+	</div>
+</div>
+</body>
+</html>
