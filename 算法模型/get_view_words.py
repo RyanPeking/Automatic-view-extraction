@@ -7,7 +7,7 @@ from collections import defaultdict
 import synonyms
 from function import get_word_list
 
-def get_view_words(initial_word='说 表示 认为 提出', maxsize=400):
+def get_view_words(initial_word='说 表示 认为 提出 补充', maxsize=400):
     def get_related_words_by_synonyms(initial_word, maxsize):
         unseen = initial_word.split()
         seen = defaultdict(int)
@@ -38,3 +38,4 @@ if __name__ == '__main__':
     view_words = get_view_words()
     with open(r'D:\Github_project\Project_one\算法模型\data\view_words_unsift.pk', 'wb') as f:
         pickle.dump(view_words, f)
+    print(view_words)
