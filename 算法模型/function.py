@@ -24,7 +24,7 @@ def cut_by_ltp(sentence):
     from pyltp import Segmentor
     segmentor = Segmentor()  # 初始化实例
     segmentor.load('D:\data\ltp_data_v3.4.0\cws.model')  # 加载模型
-    # words = [word for word in segmentor.segment(sentence)]  # 分词
+     # 分词
     words = segmentor.segment(sentence)
     segmentor.release()
     return words
@@ -34,7 +34,7 @@ def get_postags(words):
     from pyltp import Postagger
     postagger = Postagger() # 初始化实例
     postagger.load('D:\data\ltp_data_v3.4.0\pos.model')  # 加载模型
-    # postags = [postag for postag in postagger.postag(words)]  # 词性标注
+     # 词性标注
     postags = postagger.postag(words)
     postagger.release()  # 释放模型
     return postags
@@ -44,7 +44,7 @@ def get_netags(words, postags):
     from pyltp import NamedEntityRecognizer
     recognizer = NamedEntityRecognizer() # 初始化实例
     recognizer.load(r'D:\data\ltp_data_v3.4.0\ner.model')  # 加载模型
-    # netags = [postag for postag in recognizer.recognize(words, postags) ] # 命名实体识别
+    # 命名实体识别
     netags = recognizer.recognize(words, postags)
     recognizer.release()  # 释放模型
     return netags
@@ -55,7 +55,6 @@ def get_arcs(words, postags):
     parser = Parser() # 初始化实例
     parser.load(r'D:\data\ltp_data_v3.4.0\parser.model')  # 加载模型
     arcs = parser.parse(words, postags)  # 句法分析
-    # arcs = [(arc.head, arc.relation) for arc in arcs]
     # 利用依存句法提取句子主体
     parser.release()  # 释放模型
     return arcs
@@ -66,11 +65,8 @@ def get_roles(words, postags, arcs):
     labeller = SementicRoleLabeller() # 初始化实例
     labeller.load(r'D:\data\ltp_data_v3.4.0\pisrl_win.model')  # 加载模型
     roles = labeller.label(words, postags, arcs)  # 语义角色标注
-    roles_reslut = {}
-    for role in roles:
-        roles_reslut[role.index] = [(arg.name, arg.range.start, arg.range.end) for arg in role.arguments]
     labeller.release()  # 释放模型
-    return roles_reslut
+    return roles
 
 # 判断一个词是否是动词，是的话返回True
 # 判断一个词是否是动词，是的话返回True

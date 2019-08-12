@@ -9,12 +9,11 @@ with open(r'D:\Github_project\Project_one\算法模型\data\view_words.pk', 'rb'
 
 news_sports_content_sentences = [n['content'].replace('\u3000', '').split('\\n') for n in news_sports if n['content']]
 
-# print(news_sports_content_sentences[:3])
-
-for document in news_sports_content_sentences[:10]:
+for document in news_sports_content_sentences:
     for sentence in document:
         for view_word in view_words:
             if view_word in sentence:
+                print(view_word, sentence)
                 words = cut_by_ltp(sentence)
                 # print(words)
                 # 词性
@@ -35,7 +34,7 @@ for document in news_sports_content_sentences[:10]:
                     if arc.relation == 'SBV' and words[arc.head - 1] == view_word:
                         # 如果主语是代词，需要从前文找出主体
                         if postags[i] == 'r':
-                            for j in range(i, 0, -1):
+                            for j in range(0, i):
                                 if netags[j] != 'O':
                                     # 找出主体的定语
                                     if arcs[j].relation == 'ATT':
@@ -55,13 +54,19 @@ for document in news_sports_content_sentences[:10]:
                             print(pattern.findall(sentence))
                         else:
                             mark = 0
-                            for role in roles[arc.head - 1]:
-                                if 'A1' in role:
-                                    mark = 1
-                                    print(''.join(words[role[1]: role[2] + 1]))
+                            for role in roles:
+                                if role.index == arc.head - 1:
+                                    for arg in role.arguments:
+                                        if arg.name == 'A1':
+                                            mark = 1
+                                            print(''.join(words[arg.range.start: arg.range.end + 1]))
                             if mark == 0:
-                                print(''.join(words[arc[0] - 1 : ]))
+                                # 判断是不是标点符号
+                                if postags[arc.head] == 'wp':
+                                    print(''.join(words[arc.head + 1:]))
+                                else:
+                                    print(''.join(words[arc.head:]))
 
-                print(view_word, sentence)
+
 
 
