@@ -20,7 +20,7 @@ news_society = []# 社会
 news_polity = []# 政治法律
 news_civilization = []# 文化娱乐
 news_military = []# 军事
-news_enducation = []# 教育
+news_education = []# 教育
 news_other = []# 其他
 
 for news in news:
@@ -41,7 +41,7 @@ for news in news:
         if any_in(['军事', '指挥', '军情', '武器', '装备'], news_type):
             news_military.append(news)
         if any_in(['教育'], news_type):
-            news_enducation.append(news)
+            news_education.append(news)
         if any_in(['其它'], news_type):
             news_other.append(news)
 
@@ -57,8 +57,8 @@ with open(r'D:\Github_project\Project_one\算法模型\data\news_civilization.pk
     pickle.dump(news_civilization, f)
 with open(r'D:\Github_project\Project_one\算法模型\data\news_military.pk', 'wb') as f:
     pickle.dump(news_military, f)
-with open(r'D:\Github_project\Project_one\算法模型\data\news_enducation.pk', 'wb') as f:
-    pickle.dump(news_enducation, f)
+with open(r'D:\Github_project\Project_one\算法模型\data\news_education.pk', 'wb') as f:
+    pickle.dump(news_education, f)
 with open(r'D:\Github_project\Project_one\算法模型\data\news_other.pk', 'wb') as f:
     pickle.dump(news_other, f)
 
