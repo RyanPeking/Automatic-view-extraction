@@ -2,105 +2,126 @@ import pickle
 import re
 from pyltp import Segmentor, Postagger, NamedEntityRecognizer, Parser, SementicRoleLabeller
 
+
+def abstract(view_word, sentence):
+    # 分词
+    words = segmentor.segment(sentence)
+    # 词性标注
+    postags = postagger.postag(words)
+    # 命名实体识别
+    netags = recognizer.recognize(words, postags)
+    # 依存句法
+    arcs = parser.parse(words, postags)
+
+    # 提取人物主体，谓语，及观点
+    for i, arc in enumerate(arcs):
+        # 主语，找出符合条件的主宾关系
+        if arc.relation == 'SBV' and words[arc.head - 1] == view_word:
+            # 如果主语是代词，需要从前文找出主体
+            if postags[i] == 'r':
+                sign = 0
+                # 向前找主语
+                for j in range(i, 0, -1):
+                    if netags[j] != 'O':
+                        # 找出主体的定语
+                        sign = 1
+                        if arcs[j].relation == 'ATT':
+                            subject = words[j] + words[arcs[j].head - 1]
+                        else:
+                            subject = words[j]
+                        break
+                if sign == 0:
+                    # 向后找主语
+                    for j in range(i, len(words)):
+                        if netags[j] != 'O':
+                            # 找出主体的定语
+                            sign = 1
+                            if arcs[j].relation == 'ATT':
+                                subject = words[j] + words[arcs[j].head - 1]
+                            else:
+                                subject = words[j]
+                            break
+                    # 实在找不到就用代词
+                    if sign == 0:
+                        subject = words[i]
+            else:
+                subject = words[i]
+
+            # 谓语
+            predicate = view_word
+
+            # 观点
+            view = ''
+
+            # 提取观点，先用角色标注，后考虑引号直接拿出，再没有直接将谓语后面的句子输出
+            mark = 0
+
+            # 语义角色标注
+            roles = labeller.label(words, postags, arcs)
+
+            for role in roles:
+                if role.index == arc.head - 1:
+                    for arg in role.arguments:
+                        if arg.name == 'A1':
+                            # 发现这种方法不准，例如：补充道，会把道作为宾语
+                            if arg.range.end - arg.range.start < 2:
+                                # 调整谓语
+                                view_word += ''.join(words[arg.range.start: arg.range.end + 1])
+                                predicate = view_word
+                            else:
+                                mark = 1
+                                view = ''.join(words[arg.range.start: arg.range.end + 1])
+                        # 调整谓语，谓语可能有状语,例：我不知道为什么喜欢
+                        if arg.name == 'ADV':
+                            predicate = ''.join(words[arg.range.start: arg.range.end + 1]) + view_word
+
+            if mark == 0:
+                # 引号里面字少的认为不是说的话，可能是特殊词
+                pattern = re.compile(r'(“.*?”)')
+                if pattern.findall(sentence) != []:
+                    for s in pattern.findall(sentence):
+                        if len(s) > 6:
+                            view += s
+                else:
+                    # 判断是不是标点符号
+                    if arc.head < len(words) and postags[arc.head] == 'wp':
+                        view = ''.join(words[arc.head + 1:])
+                    else:
+                        view = ''.join(words[arc.head:])
+            return (subject, predicate, view)
+    return None
+
 def add_opinion(view_words, news_list):
     for num, document in enumerate(news_list):
         news_list[num]['opinion'] = []
         if num % 100 == 0:
             print('已执行%s%%' % (num / len(news_list) * 100))
         if document['content']:
-            news_content_sentences = document['content'].replace('\u3000', '').split('\\n')
+            # news_content_sentences = document['content'].replace('\u3000', '').split('\\n').split('\n')
+            news_content_sentences = re.split(r'\\n|\n', document['content'].replace('\u3000', '').replace('????', '\n'))
 
-        for sentence in news_content_sentences:
-            for view_word in view_words:
-                if view_word in sentence:
-                    # 分词
-                    words = segmentor.segment(sentence)
-                    # 词性标注
-                    postags = postagger.postag(words)
-                    # 命名实体识别
-                    netags = recognizer.recognize(words, postags)
-                    # 依存句法
-                    arcs = parser.parse(words, postags)
-                    # 语义角色标注
-                    roles = labeller.label(words, postags, arcs)
-
-                    # 提取人物主体，谓语，及观点
-                    for i, arc in enumerate(arcs):
-                        # 主语，找出符合条件的主宾关系
-                        if arc.relation == 'SBV' and words[arc.head - 1] == view_word:
-                            # 如果主语是代词，需要从前文找出主体
-                            if postags[i] == 'r':
-                                sign = 0
-                                # 向前找主语
-                                for j in range(i, 0, -1):
-                                    if netags[j] != 'O':
-                                        # 找出主体的定语
-                                        sign = 1
-                                        if arcs[j].relation == 'ATT':
-                                            subject = words[j] + words[arcs[j].head - 1]
-                                        else:
-                                            subject = words[j]
-                                        break
-                                if sign == 0:
-                                    # 向后找主语
-                                    for j in range(i, len(words)):
-                                        if netags[j] != 'O':
-                                            # 找出主体的定语
-                                            sign = 1
-                                            if arcs[j].relation == 'ATT':
-                                                subject = words[j] + words[arcs[j].head - 1]
-                                            else:
-                                                subject = words[j]
-                                            break
-                                    # 实在找不到就用代词
-                                    if sign == 0:
-                                        subject = words[i]
-                            else:
-                                subject = words[i]
-
-                            # 谓语
-                            predicate = view_word
-
-                            # 观点
-                            view = ''
-
-                            # 提取观点，先用角色标注，后考虑引号直接拿出，再没有直接将谓语后面的句子输出
-                            mark = 0
-                            for role in roles:
-                                if role.index == arc.head - 1:
-                                    for arg in role.arguments:
-                                        if arg.name == 'A1':
-                                            # 发现这种方法不准，例如：补充道，会把道作为宾语
-                                            if arg.range.end - arg.range.start < 2:
-                                                # 调整谓语
-                                                view_word += ''.join(words[arg.range.start: arg.range.end + 1])
-                                                predicate = view_word
-                                            else:
-                                                mark = 1
-                                                view = ''.join(words[arg.range.start: arg.range.end + 1])
-                                        # 调整谓语，谓语可能有状语,例：我不知道为什么喜欢
-                                        if arg.name == 'ADV':
-                                            predicate = ''.join(words[arg.range.start: arg.range.end + 1]) + view_word
-
-                            if mark == 0:
-                                # 引号里面字少的认为不是说的话，可能是特殊词
-                                pattern = re.compile(r'(“.*?”)')
-                                if pattern.findall(sentence) != []:
-                                    for s in pattern.findall(sentence):
-                                        if len(s) > 6:
-                                            view += s
-                                else:
-                                    # 判断是不是标点符号
-                                    if arc.head < len(words) and postags[arc.head] == 'wp':
-                                        view = ''.join(words[arc.head + 1:])
-                                    else:
-                                        view = ''.join(words[arc.head:])
-                            # print(subject, predicate, view)
-                            news_list[num]['opinion'].append((subject, predicate, view))
+            for sentence in news_content_sentences:
+                if len(sentence) > 200:
+                    sentence_cut = re.split('[ ；。]', sentence)
+                    for short_sentence in sentence_cut:
+                        for view_word in view_words:
+                            if view_word in short_sentence:
+                                result = abstract(view_word, short_sentence)
+                                if result != None:
+                                    news_list[num]['opinion'].append(result)
+                else:
+                    for view_word in view_words:
+                        if view_word in sentence:
+                            result = abstract(view_word, sentence)
+                            if result != None:
+                                news_list[num]['opinion'].append(result)
+            # print(news_list[num])
+    print('执行完成')
 
 if __name__ == '__main__':
     with open(r'D:\Github_project\Project_one\算法模型\data\view_words.pk', 'rb') as f:
         view_words = pickle.load(f)
+
 
     # 加载模型
     # # 哈工大ltp分词
@@ -122,16 +143,17 @@ if __name__ == '__main__':
     with open(r'D:\Github_project\Project_one\算法模型\data\news_sports.pk', 'rb') as f:
         news_sports = pickle.load(f)
     print('正在提取news_sports...')
-    add_opinion(view_words, news_sports[4500: 4800])
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_sports_add_opinion_4500_4800.pk', 'wb') as f:
-        pickle.dump(news_sports[4500: 4800], f)
+    add_opinion(view_words, news_sports[22368:22369])
+    print(news_sports[22368:22369])
+    with open(r'D:\Github_project\Project_one\算法模型\data\news_sports_add_opinion_22350_end.pk', 'wb') as f:
+        pickle.dump(news_sports[22368], f)
     print('news_sports提取完成！')
 
 
     # with open(r'D:\Github_project\Project_one\算法模型\data\news_civilization.pk', 'rb') as f:
     #     news_civilization = pickle.load(f)
     # print('正在提取news_civilization...')
-    # add_opinion(view_words, news_civilization)
+    # add_opinion(view_words, news_civilization[7200:])
     # with open(r'D:\Github_project\Project_one\算法模型\data\news_civilization_add_opinion.pk', 'wb') as f:
     #     pickle.dump(news_civilization, f)
     # print('news_civilization提取完成！')
@@ -177,10 +199,10 @@ if __name__ == '__main__':
     #     pickle.dump(news_polity, f)
     # print('news_polity提取完成！')
     #
-    # with open(r'D:\Github_project\Project_one\算法模型\data\news_society.pk', 'rb') as f:
-    #     news_society = pickle.load(f)
-    # print('正在提取news_society...')
-    # add_opinion(view_words, news_society)
+    with open(r'D:\Github_project\Project_one\算法模型\data\news_society.pk', 'rb') as f:
+        news_society = pickle.load(f)
+    print('正在提取news_society...')
+    add_opinion(view_words, news_society[15500:])
     # with open(r'D:\Github_project\Project_one\算法模型\data\news_society_add_opinion.pk', 'wb') as f:
     #     pickle.dump(news_society, f)
     # print('news_society提取完成！')

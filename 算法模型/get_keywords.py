@@ -1,7 +1,6 @@
 import math
 import pickle
 from collections import defaultdict
-from function import get_word_list
 
 # 停用词
 stop_words = []
@@ -46,8 +45,10 @@ def get_keywords_of_all_document(news_content):
             tfidf_dict[word[0]] += word[1]
 
     tfidf_rank = sorted(tfidf_dict.items(), key=lambda d: d[1], reverse=True)
-    keywords = get_word_list(tfidf_rank)
-    keywords = [word for word in keywords if (word not in stop_words and not word.isdigit())]
+    # print(tfidf_rank)
+    # keywords = get_word_list(tfidf_rank)
+    keywords = [(word, tfidf) for (word, tfidf) in tfidf_rank if (word not in stop_words and not word.isdigit())]
+    print(keywords[:30])
     return keywords
 
 if __name__ == '__main__':
