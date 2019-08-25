@@ -18,8 +18,11 @@ def get_X(content_filepath):
     return X
 
 def search_engine(query, content_filepath, news_add_opinion_filepath):
+    if query.isalpha():
+        query = query.lower()
+
     global vectorized
-    vectorized = TfidfVectorizer()
+    vectorized = TfidfVectorizer(max_features=10000)
 
     # 得到tfidf矩阵
     X = get_X(content_filepath)
@@ -51,5 +54,5 @@ def search_engine(query, content_filepath, news_add_opinion_filepath):
 if __name__ == '__main__':
     # 输入：关键字，content文件目录，news_add_opinion文件目录
     # 输出：按照tfidf及有无观点提取的新闻排名，如果没有返回None
-    search_result = search_engine('文化部门 基础设施', r'D:\Github_project\Project_one\算法模型\data\news_civilization_content.pk', r'D:\Github_project\Project_one\算法模型\data\news_civilization_add_opinion.pk')
+    search_result = search_engine('NBA詹姆斯', r'D:\Github_project\Project_one\算法模型\data\news_sports_content.pk', r'D:\Github_project\Project_one\算法模型\data\news_sports_add_opinion_drop_duplicates.pk')
     print(search_result)

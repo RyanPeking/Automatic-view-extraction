@@ -88,7 +88,8 @@ def abstract(view_word, sentence):
                         view = ''.join(words[arc.head + 1:])
                     else:
                         view = ''.join(words[arc.head:])
-            return (subject, predicate, view)
+            if len(view) > 4:
+                return (subject, predicate, view)
     return None
 
 
@@ -141,56 +142,56 @@ if __name__ == '__main__':
     labeller = SementicRoleLabeller()  # 初始化实例
     labeller.load(r'D:\data\ltp_data_v3.4.0\pisrl_win.model')  # 加载模型
 
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_sports.pk', 'rb') as f:
-        news_sports = pickle.load(f)
-    print('正在提取news_sports...')
-    add_opinion(view_words, news_sports)
-    print(news_sports)
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_sports_add_opinion_22350_end.pk', 'wb') as f:
-        pickle.dump(news_sports, f)
-    print('news_sports提取完成！')
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_sports.pk', 'rb') as f:
+    #     news_sports = pickle.load(f)
+    # print('正在提取news_sports...')
+    # add_opinion(view_words, news_sports)
+    # print(news_sports)
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_sports_add_opinion_22350_end.pk', 'wb') as f:
+    #     pickle.dump(news_sports, f)
+    # print('news_sports提取完成！')
 
 
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_civilization.pk', 'rb') as f:
-        news_civilization = pickle.load(f)
-    print('正在提取news_civilization...')
-    add_opinion(view_words, news_civilization[7200:])
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_civilization_add_opinion.pk', 'wb') as f:
-        pickle.dump(news_civilization, f)
-    print('news_civilization提取完成！')
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_civilization.pk', 'rb') as f:
+    #     news_civilization = pickle.load(f)
+    # print('正在提取news_civilization...')
+    # add_opinion(view_words, news_civilization)
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_civilization_add_opinion.pk', 'wb') as f:
+    #     pickle.dump(news_civilization, f)
+    # print('news_civilization提取完成！')
 
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_economy.pk', 'rb') as f:
-        news_economy = pickle.load(f)
-    print('正在提取news_economy...')
-    add_opinion(view_words, news_economy)
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_economy_add_opinion.pk', 'wb') as f:
-        pickle.dump(news_economy, f)
-    print('news_economy提取完成！')
-
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_education.pk', 'rb') as f:
-        news_education = pickle.load(f)
-    print('正在提取news_education...')
-    add_opinion(view_words, news_education)
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_education_add_opinion.pk', 'wb') as f:
-        pickle.dump(news_education, f)
-    print('news_education提取完成！')
-
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_military.pk', 'rb') as f:
-        news_military = pickle.load(f)
-    print('正在提取news_military...')
-    add_opinion(view_words, news_military)
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_military_add_opinion.pk', 'wb') as f:
-        pickle.dump(news_military, f)
-    print('news_military提取完成！')
-
-
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_other.pk', 'rb') as f:
-        news_other = pickle.load(f)
-    print('正在提取news_other...')
-    add_opinion(view_words, news_other)
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_other_add_opinion.pk', 'wb') as f:
-        pickle.dump(news_other, f)
-    print('news_other提取完成！')
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_economy.pk', 'rb') as f:
+    #     news_economy = pickle.load(f)
+    # print('正在提取news_economy...')
+    # add_opinion(view_words, news_economy)
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_economy_add_opinion.pk', 'wb') as f:
+    #     pickle.dump(news_economy, f)
+    # print('news_economy提取完成！')
+    #
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_education.pk', 'rb') as f:
+    #     news_education = pickle.load(f)
+    # print('正在提取news_education...')
+    # add_opinion(view_words, news_education)
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_education_add_opinion.pk', 'wb') as f:
+    #     pickle.dump(news_education, f)
+    # print('news_education提取完成！')
+    #
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_military.pk', 'rb') as f:
+    #     news_military = pickle.load(f)
+    # print('正在提取news_military...')
+    # add_opinion(view_words, news_military)
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_military_add_opinion.pk', 'wb') as f:
+    #     pickle.dump(news_military, f)
+    # print('news_military提取完成！')
+    #
+    #
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_other.pk', 'rb') as f:
+    #     news_other = pickle.load(f)
+    # print('正在提取news_other...')
+    # add_opinion(view_words, news_other)
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_other_add_opinion.pk', 'wb') as f:
+    #     pickle.dump(news_other, f)
+    # print('news_other提取完成！')
 
     with open(r'D:\Github_project\Project_one\算法模型\data\news_polity.pk', 'rb') as f:
         news_polity = pickle.load(f)
@@ -200,13 +201,13 @@ if __name__ == '__main__':
         pickle.dump(news_polity, f)
     print('news_polity提取完成！')
 
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_society.pk', 'rb') as f:
-        news_society = pickle.load(f)
-    print('正在提取news_society...')
-    add_opinion(view_words, news_society[15500:])
-    with open(r'D:\Github_project\Project_one\算法模型\data\news_society_add_opinion.pk', 'wb') as f:
-        pickle.dump(news_society, f)
-    print('news_society提取完成！')
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_society.pk', 'rb') as f:
+    #     news_society = pickle.load(f)
+    # print('正在提取news_society...')
+    # add_opinion(view_words, news_society[15500:])
+    # with open(r'D:\Github_project\Project_one\算法模型\data\news_society_add_opinion.pk', 'wb') as f:
+    #     pickle.dump(news_society, f)
+    # print('news_society提取完成！')
 
 # 释放模型
     segmentor.release()
