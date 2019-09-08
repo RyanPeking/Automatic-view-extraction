@@ -1,0 +1,30 @@
+Bottle v0.12.17 server starting up (using WSGIRefServer())...
+Listening on http://0.0.0.0:8880/
+Hit Ctrl-C to quit.
+
+221.234.157.97 - - [29/Aug/2019 10:56:20] "GET / HTTP/1.1" 200 614
+221.234.157.97 - - [29/Aug/2019 10:56:20] "GET /static/urlconfig.js HTTP/1.1" 200 17
+221.234.157.97 - - [29/Aug/2019 10:56:21] "GET /static/css/app.792481f914699e73d4535491840d14c5.css HTTP/1.1" 200 284237
+221.234.157.97 - - [29/Aug/2019 10:56:21] "GET /static/js/app.c429c93f532dca8d03b0.js HTTP/1.1" 200 23382
+221.234.157.97 - - [29/Aug/2019 10:56:21] "GET /static/js/manifest.2ae2e69a05c33dfc65f8.js HTTP/1.1" 200 857
+221.234.157.97 - - [29/Aug/2019 10:56:22] "GET /static/js/vendor.d4d8cec95bab28c82823.js HTTP/1.1" 200 988453
+221.234.157.97 - - [29/Aug/2019 10:56:22] "GET /static/js/manifest.2ae2e69a05c33dfc65f8.js.map HTTP/1.1" 200 4972
+221.234.157.97 - - [29/Aug/2019 10:56:23] "GET /static/css/app.792481f914699e73d4535491840d14c5.css.map HTTP/1.1" 200 400368
+221.234.157.97 - - [29/Aug/2019 10:56:28] "GET /static/js/vendor.d4d8cec95bab28c82823.js.map HTTP/1.1" 200 4227372
+221.234.157.97 - - [29/Aug/2019 10:56:28] "GET /getAllInfo HTTP/1.1" 200 28679
+221.234.157.97 - - [29/Aug/2019 10:56:29] "GET /static/fonts/ionicons.143146f.woff2 HTTP/1.1" 200 82216
+221.234.157.97 - - [29/Aug/2019 10:56:29] "GET /static/img/logo.db4591d.png HTTP/1.1" 200 13710
+221.234.157.97 - - [29/Aug/2019 10:56:29] "GET /static/img/logo-2.db51f58.png HTTP/1.1" 200 25861
+221.234.157.97 - - [29/Aug/2019 10:56:29] "GET /static/js/app.c429c93f532dca8d03b0.js.map HTTP/1.1" 200 83050
+221.234.157.97 - - [29/Aug/2019 10:56:31] "GET /static/favicon.ico HTTP/1.1" 200 9470
+221.234.157.97 - - [29/Aug/2019 10:56:47] "GET / HTTP/1.1" 200 614
+221.234.157.97 - - [29/Aug/2019 10:56:48] "GET /getAllInfo HTTP/1.1" 200 28679
+221.234.157.97 - - [29/Aug/2019 10:56:48] "GET /static/favicon.ico HTTP/1.1" 200 9470
+61.148.116.242 - - [29/Aug/2019 10:56:52] "GET / HTTP/1.1" 200 614
+61.148.116.242 - - [29/Aug/2019 10:56:52] "GET /static/urlconfig.js HTTP/1.1" 304 0
+61.148.116.242 - - [29/Aug/2019 10:56:52] "GET /getAllInfo HTTP/1.1" 200 28679
+61.148.116.242 - - [29/Aug/2019 10:56:52] "GET /static/favicon.ico HTTP/1.1" 200 9470
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.832 seconds.
+Prefix dict has been built succesfully.
