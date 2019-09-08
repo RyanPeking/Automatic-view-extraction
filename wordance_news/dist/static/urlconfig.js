@@ -1,1 +1,1 @@
-SERVICE_URL = 'http://39.100.3.165:8080'
+SERVICE_URL = 'http://localhost:8080/'

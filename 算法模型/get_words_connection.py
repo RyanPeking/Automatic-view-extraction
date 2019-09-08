@@ -25,8 +25,8 @@ def get_words_connection(keywords, word2vec_filepath):
     for word in unseen:
         new_expanding = get_word_list(news_word2vec.most_similar(word, topn=5))
         seen[word].update(new_expanding)
-    return seen
+    return (seen, root)
 
 if __name__ == '__main__':
-    word_connection = get_words_connection('nba', r'D:\Github_project\Project_one\算法模型\data\news_sports_word2vec.w2v')
-    print(word_connection)
+    word_connection, root = get_words_connection('库里詹姆斯', r'D:\Github_project\Project_one\算法模型\data\news_sports_word2vec.w2v')
+    print(word_connection, root)

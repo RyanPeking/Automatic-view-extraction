@@ -16,8 +16,11 @@ def get_words_connection(keywords, word2vec_filepath):
         # if word.islower() and word not in news_word2vec.vocab:
         #     word = word.upper()
         if word.isalpha() and word not in news_word2vec.vocab:
-            # print(word, str(news_word2vec))
-            word = re.findall(word, str(news_word2vec.vocab), flags=re.IGNORECASE)[0]
+            word = re.findall(word, str(news_word2vec.vocab), flags=re.IGNORECASE)
+            if word != []:
+                word = word[0]
+            else:
+                return ({}, word)
         try:
             new_expanding = get_word_list(news_word2vec.most_similar(word, topn=5))
         except KeyError:
