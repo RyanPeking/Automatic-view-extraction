@@ -1,4 +1,5 @@
-# Project_one
+# Project_one：新闻观点自动提取
+## 直接运行wordance_news中的index即可
 ### 算法模型中
 #### function：提供各种常用函数
 #### get_news: 获取新闻及分类
